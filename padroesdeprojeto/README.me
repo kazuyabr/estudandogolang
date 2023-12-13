@@ -1,0 +1,73 @@
+# Boas praticas e padrões de projeto se encontra aqui
+
+Sempre que for começar o seu projeto em Golang utilize do comando '''"go mod init "seu pacote no caso de quem trabalhou com java antes seria o identificador do pacote tipo um (com.seuprojeto)"''' ficando como abaixo no golang:
+``` go mod init github.com/seuusuarioa/seurepositorio ```
+Com isso você criou seu modulo "go.mod" e quem quiser usa-lo bastara fazer um ``` go get github.com/seuusuario/seurepositorio ``` facilitando assim a gestão de dependencias de pacotes externos da comunidade.
+
+* Areas que terão os arquivos do projeto comumente ficaram na pasta CMD
+* Dentro de CMD é comum e recomendavel criar pastas com o nome do projeto. neste exemplo criei api-client e api-server como projetos
+* Você não esta preso a colocar o nome do pacote com o mesmo nome da pasta. Sendo assim o seu package pode ser sempre main e não dara conflito.
+* Recomendado criar a main em um arquivo main.go para facilitar reconhecimento da comunidade aonde sua aplicação se iniciara (não é obrigatório mas fortemente recomendado)
+
+# Arquivos de Teste
+
+todos os arquivos de testes devem terminar em _test.go e isso ja fara com que ele seja reconhecido como test
+* No test podemos usar package nomeentidade para termos acesso aos metodos privados
+* No test podemos tambem usar package nomeentidade_test e assim não temos acesso aos metodos privados, mas temos acesso aos metodos exportados que são os metodos iniciados com letra maiuscula
+
+# Pastas de uso interno da aplicação
+
+* Pacotes internos de uso de sua aplicação é recomendavel fortemente o uso do nome do pacote ser o nome da pasta uma vez q você sempre precisara chama-las para sua aplicação importando-as
+* Nomes das pastas e arquivos sempre em letras minusculas
+* Tudo o que esta na pasta internal deve ser usado exclusivamente por sua aplicação
+* Se a regra de negócio permite uso dos modulos de forma externa a sua aplicação você deversa usar a pasta PKG
+
+
+# PKG
+* Quais quer modulos tem acesso aos pacotes dentro desta pasta
+
+# Build
+
+* É recomendado colocar os arquivos de construção de sua aplicação aqui, como por exemplo Dockerfile e docker-compose.yml (eu particularmente prefiro usar estes arquivos em repositório separado ao projeto, mas é uma recomendação que vale ao menos conhecer)
+
+# Configs
+
+* Aqui ficam seus arquivos de configuração de projeto como .env
+
+# Docs
+
+* Aqui ficam seus arquivos de documentações
+
+# API
+
+* Estranhamente essa pasta não é a pasta para se colocar os arquivos de seu webserver de fato, mas sim de geração de documentação como Swagger por exemplo.
+
+# Scripts
+
+* Aqui você pode utilizar para gerar scripts em geral que não são necessariamente em go como por exemplo Makefile (pasta de geração de scripts ou automações)
+* Cria-se coisas especificas aqui. o que estiver fora tem uso mais geral
+
+# Test
+
+* Testes que ja tratamos antes tem a ver com testes locais, mas na pasta test é mais geral como por exemplo test End To End
+
+# Examples
+
+* Pasta usada para colocar exemplos praticos de uso do projeto que você criou
+
+# Web
+
+* Aqui você coloca todos os seus assets
+
+# Website
+
+* Aqui são os arquivos do site e não os apenas
+
+# Arquivo Makefile
+
+* Makefile na raiz do projeto é usado para automatizar tudo ou seja como ele esta na raiz do projeto ele pode gerenciar todo o seu projeto e automatizar aquilo que sua regra de negócio necessitar
+
+# Pastas recomendadas para uso quando iniciar um projeto que ira resolver maior parte dos problemas de estrutura de projetos
+-cmd (eu particularmente uso cmd como src ainda. não consegui me acostumar a usar a pasta com nome de cmd)
+-internal
+-pkg
