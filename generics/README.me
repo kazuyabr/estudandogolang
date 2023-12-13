@@ -1,0 +1,7 @@
+# Solucionar problema de vendor
+
+Caso esteja tentando rodar algum código aqui mas encontre o erro abaixo (endereço C: é ficticio aqui pois sera seu endereço)
+```go: inconsistent vendoring in C:\xxxx\golang\src:
+        golang.org/x/exp@v0.0.0-20231206192017-f3f8817b8deb: is explicitly required in go.mod, but not marked as... ```
+
+rode o comando go mod vendor e isso sera corrigido, pois o que ele esta tentando fazer é sincronizar os pacotes da sua aplicação com as dependencias.
